@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime.js Advanced Demo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c34;
+            overflow: hidden;
+        }
+        .box {
+            width: 80px;
+            height: 80px;
+            background-color: #ff0000;
+            position: absolute;
+            border-radius: 10px;
+            transform-origin: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    
+    <script>
+        let boxAnimation = anime.timeline({
+            loop: true, // 無限循環
+            easing: "easeInOutSine"
+        });
+
+        boxAnimation
+            .add({
+                targets: ".box",
+                translateX: [-300, 300], // 往右移動
+                backgroundColor: "#00ff00", // 變綠
+                duration: 1000
+            })
+            .add({
+                targets: ".box",
+                translateY: [0, 200], // 往下移動
+                rotate: 180, // 旋轉 180 度
+                backgroundColor: "#0000ff", // 變藍
+                duration: 1000
+            })
+            .add({
+                targets: ".box",
+                translateX: [300, -300], // 往左移動
+                scale: [1, 1.5], // 放大
+                backgroundColor: "#ff00ff", // 變紫
+                duration: 1000,
+                borderRadius: ["10px", "50%"], 
+            })
+            .add({
+                targets: ".box",
+                translateY: [200, 0], // 往上移動
+                rotate: 360, // 旋轉回原點
+                scale: [1.5, 1], // 縮回
+                backgroundColor: "#ff0000", // 回到紅色
+                duration: 1000,
+
+            });
+    </script>
+</body>
+</html>
